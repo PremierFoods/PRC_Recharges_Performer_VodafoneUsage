@@ -1,0 +1,176 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "TransactionItem&StateMachine_1",
+        "SystemException&StateMachine_1",
+        "BusinessException&StateMachine_1",
+        "TransactionNumber&StateMachine_1",
+        "Config&StateMachine_1",
+        "RetryNumber&StateMachine_1",
+        "TransactionField2&StateMachine_1",
+        "TransactionField1&StateMachine_1",
+        "TransactionID&StateMachine_1",
+        "dt_TransactionData&StateMachine_1",
+        "ConsecutiveSystemExceptions&StateMachine_1",
+        "ShouldStop&Sequence_25"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/Process.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dtDataForJournal&Sequence_1",
+        "strPeriod&Sequence_1",
+        "dtPivotTable&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_TransactionItem",
+        "in_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "SubProcesses/Recharges - 3.1 Copy Data In Template.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dtUsers&Sequence_1",
+        "dtSummary&Sequence_1",
+        "strSubProcessName&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_strInvoiceFilePath",
+        "in_strTemplatePath"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "SubProcesses/Recharges - 3.2 Create Active List.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "rowData&Sequence_1",
+        "intRowIndex&Sequence_1",
+        "dtUnprocessedActiveList&Sequence_1",
+        "dtActiveList&Sequence_1",
+        "strSheetName&Sequence_5",
+        "strSubProcessName&Sequence_1",
+        "strSheetName&Sequence_3"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_strTemplatePath",
+        "in_strActiveListFile"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "SubProcesses/Recharges - 3.3 Identify Cost Center.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strMailBody&Sequence_1",
+        "dtMissingCC&Sequence_1",
+        "dtActiveList&Sequence_1",
+        "intRowIndex&Sequence_1",
+        "dtDataReceived&Sequence_1",
+        "strSubProcessName&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_strInvoiceFilePath",
+        "in_strTemplatePath"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "SubProcesses/Recharges - 3.4 Update Summary Data.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "intRowIndex&Sequence_1",
+        "dtSummaryData&Sequence_1",
+        "strSubProcessName&Sequence_1",
+        "dtDataReceived&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_strTemplatePath",
+        "in_strPeriod",
+        "out_dtPivotTable"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "SubProcesses/Recharges - 3.5 Update Data for Journal.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strSubProcessName&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_dtPivotTable",
+        "in_strYear",
+        "out_dtDataForJournal",
+        "in_Config",
+        "in_strTemplatePath",
+        "in_strPeriod"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "SubProcesses/Recharges - 3.6 Update Journal.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "in_dtDataForJournal",
+        "in_Config",
+        "in_strTemplatePath"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "SubProcesses/Recharges - 3.7 Update Header.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strSubProcessName&Sequence_1",
+        "dtDataReceived&Sequence_1",
+        "dtSummaryData&Flowchart_1",
+        "intRowIndex&Flowchart_1",
+        "strJournalHeaderText&Flowchart_1",
+        "strReference&Flowchart_1",
+        "strPreparedBy&Flowchart_1",
+        "strDatePrepared&Flowchart_1",
+        "strFinancialYear&Flowchart_1",
+        "strDocumentDate&Flowchart_1",
+        "strPostingPeriod&Flowchart_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_strTemplatePath",
+        "in_strFiscalYear",
+        "in_strFiscalMonth",
+        "in_strAttachmentMonth"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
