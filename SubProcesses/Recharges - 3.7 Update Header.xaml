@@ -1,15 +1,14 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="AfterResume" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="AfterResume" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_strTemplatePath" Type="InArgument(x:String)" />
     <x:Property Name="in_strFiscalYear" Type="InArgument(x:String)" />
     <x:Property Name="in_strFiscalMonth" Type="InArgument(x:String)" />
-    <x:Property Name="in_strAttachmentMonth" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1054.4,1568.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1055.2,1554.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AfterResume_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -146,7 +145,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Recharges - 3.7 Update Header" sap:VirtualizedContainerService.HintSize="547.2,1504" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Steps done in this workflow:&#xA;1. Write &quot;Robot&quot; in Prepared By cell&#xA;2. Write current date in Date Prepared cell&#xA;3. Write current date in Date authorized cell&#xA;4. Write current date in Date Posted cell&#xA;5. Write fiscal year in format [current year]_[current year + 1] (yy) in Financial year cell&#xA;6. Write current date in Document date cell&#xA;7. Write current date in Posting Date cell&#xA;8. Write fiscal month in Posting Month&#xA;" DisplayName="Recharges - 3.7 Update Header" sap:VirtualizedContainerService.HintSize="545.6,1489.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="Recharges - 3.4 Update Summary Data" Name="strSubProcessName" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtDataReceived" />
@@ -157,25 +156,26 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - Headers" sap:VirtualizedContainerService.HintSize="484.8,1077.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_7" InstanceCachePeriod="3000" WorkbookPath="[in_strTemplatePath]">
+    <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Excel Application Scope - Headers" sap:VirtualizedContainerService.HintSize="483.2,1205.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_7" InstanceCachePeriod="3000" SensitivityOperation="None" WorkbookPath="[in_strTemplatePath]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,968" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,1096" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelWriteCell Cell="F13" DisplayName="Write Cell - Journal Text Header" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_8" SheetName="[in_Config(&quot;VodafoneHeaderSheetName&quot;).ToString]" Text="[string.Format(&quot;P{0} Voda Act {1} {2} usage&quot;,in_strFiscalMonth,in_strAttachmentMonth,in_strFiscalYear).ToString]" />
-            <ui:ExcelWriteCell Cell="F14" DisplayName="Write Cell -Reference" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_9" SheetName="[in_Config(&quot;VodafoneHeaderSheetName&quot;).ToString]" Text="[string.Format(&quot;Re {0} {1} usage&quot;,in_strFiscalMonth,in_strFiscalYear).ToString]" />
-            <ui:ExcelWriteCell Cell="F15" DisplayName="Write Cell - Prepared By" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_10" SheetName="[in_Config(&quot;VodafoneHeaderSheetName&quot;).ToString]" Text="Robot" />
-            <ui:ExcelWriteCell Cell="H15" DisplayName="Write Cell -  Date prepared" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_11" SheetName="[in_Config(&quot;VodafoneHeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;dd/MM/yyyy&quot;)]" />
-            <ui:ExcelWriteCell Cell="B9" DisplayName="Write Cell - Financial year" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_12" SheetName="[in_Config(&quot;VodafoneHeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;yy&quot;)+&quot;_&quot;+Date.Now.AddYears(1).ToString(&quot;yy&quot;)]" />
-            <ui:ExcelWriteCell Cell="B13" DisplayName="Write Cell - Document Date" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_13" SheetName="[in_Config(&quot;VodafoneHeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;dd/MM/yyyy&quot;)]" />
-            <ui:ExcelWriteCell Cell="B16" DisplayName="Write Cell - strPostingPeriod" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_14" SheetName="[in_Config(&quot;VodafoneHeaderSheetName&quot;).ToString]" Text="[in_strFiscalMonth]" />
+            <ui:ExcelWriteCell Cell="[in_Config(&quot;PreparedByRange&quot;).ToString]" DisplayName="Write Cell - Prepared By" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_10" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[in_Config(&quot;PreparedByName&quot;).ToString]" />
+            <ui:ExcelWriteCell Cell="[in_Config(&quot;DatePreparedRange&quot;).ToString]" DisplayName="Write Cell -  Date prepared" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_11" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;dd/MM/yyyy&quot;)]" />
+            <ui:ExcelWriteCell Cell="[in_Config(&quot;DateAuthorizedRange&quot;).ToString]" DisplayName="Write Cell -  Date authorized" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_16" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;dd/MM/yyyy&quot;)]" />
+            <ui:ExcelWriteCell Cell="[in_Config(&quot;DatePostedRange&quot;).ToString]" DisplayName="Write Cell -  Date posted" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_17" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;dd/MM/yyyy&quot;)]" />
+            <ui:ExcelWriteCell Cell="[in_Config(&quot;FinancialYearRange&quot;).ToString]" DisplayName="Write Cell - Financial year" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_12" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;yy&quot;)+&quot;_&quot;+Date.Now.AddYears(1).ToString(&quot;yy&quot;)]" />
+            <ui:ExcelWriteCell Cell="[in_Config(&quot;DocumentDateRange&quot;).ToString]" DisplayName="Write Cell - Document Date" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_13" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;dd/MM/yyyy&quot;)]" />
+            <ui:ExcelWriteCell Cell="[in_Config(&quot;PostingDateRange&quot;).ToString]" DisplayName="Write Cell - Posting Date" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_18" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;MM/dd/yyyy&quot;)]" />
+            <ui:ExcelWriteCell Cell="[in_Config(&quot;PostingPeriodRange&quot;).ToString]" DisplayName="Write Cell - Posting Period" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_14" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[in_strFiscalMonth]" />
           </Sequence>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
@@ -185,388 +185,5 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484.8,243.2" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,164.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Flowchart DisplayName="Sub-Process - Recharges - 3.4 Update Summary Data" sap:VirtualizedContainerService.HintSize="387.2,52.8" sap2010:WorkflowViewState.IdRef="Flowchart_1">
-            <Flowchart.Variables>
-              <Variable x:TypeArguments="sd:DataTable" Name="dtSummaryData" />
-              <Variable x:TypeArguments="x:Int32" Default="0" Name="intRowIndex" />
-              <Variable x:TypeArguments="x:String" Name="strJournalHeaderText" />
-              <Variable x:TypeArguments="x:String" Name="strReference" />
-              <Variable x:TypeArguments="x:String" Name="strPreparedBy" />
-              <Variable x:TypeArguments="x:String" Name="strDatePrepared" />
-              <Variable x:TypeArguments="x:String" Name="strFinancialYear" />
-              <Variable x:TypeArguments="x:String" Name="strDocumentDate" />
-              <Variable x:TypeArguments="x:String" Name="strPostingPeriod" />
-            </Flowchart.Variables>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <av:Point x:Key="ShapeLocation">660,22.39999999999999</av:Point>
-                <av:Size x:Key="ShapeSize">60,75.2</av:Size>
-                <av:PointCollection x:Key="ConnectorLocation">690,97.6 690,127.6 689.8,127.6 689.8,147.6</av:PointCollection>
-                <x:Double x:Key="Width">1860</x:Double>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                <x:Double x:Key="Height">1813.1999999999998</x:Double>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <Flowchart.StartNode>
-              <x:Reference>__ReferenceID14</x:Reference>
-            </Flowchart.StartNode>
-            <FlowStep x:Name="__ReferenceID14">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">473,147.6</av:Point>
-                  <av:Size x:Key="ShapeSize">433.6,81.6</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">689.8,229.2 689.8,269.2</av:PointCollection>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <Assign DisplayName="Assign Journal Header Text" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_10">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[strJournalHeaderText]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">[string.Format("P{0} Voda Act {1} {2} usage",in_strFiscalMonth,in_strAttachmentMonth,in_strFiscalYear).ToString]</InArgument>
-                </Assign.Value>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </Assign>
-              <FlowStep.Next>
-                <FlowStep x:Name="__ReferenceID7">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:Point x:Key="ShapeLocation">589.8,269.2</av:Point>
-                      <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">689.8,322 689.8,352.00000000000006 690,352.00000000000006 690,369.2</av:PointCollection>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message - Journal Header" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Journal header: &quot;+strJournalHeaderText]">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ui:LogMessage>
-                  <FlowStep.Next>
-                    <FlowStep x:Name="__ReferenceID0">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <av:Point x:Key="ShapeLocation">473.19999999999993,369.2</av:Point>
-                          <av:Size x:Key="ShapeSize">433.6,81.6</av:Size>
-                          <av:PointCollection x:Key="ConnectorLocation">690,450.79999999999995 690,503.6</av:PointCollection>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <Assign DisplayName="Assign Reference" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_11">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:String">[strReference]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:String">[string.Format("Re {0} {1} usage",in_strFiscalMonth,in_strFiscalYear).ToString]</InArgument>
-                        </Assign.Value>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </Assign>
-                      <FlowStep.Next>
-                        <FlowStep x:Name="__ReferenceID8">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <av:Point x:Key="ShapeLocation">590,503.6</av:Point>
-                              <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-                              <av:PointCollection x:Key="ConnectorLocation">690,556.4 690,609.2</av:PointCollection>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ui:LogMessage DisplayName="Log Message - Reference" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Reference: &quot;+strReference]">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:LogMessage>
-                          <FlowStep.Next>
-                            <FlowStep x:Name="__ReferenceID1">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <av:Point x:Key="ShapeLocation">473.20000000000005,609.2</av:Point>
-                                  <av:Size x:Key="ShapeSize">433.6,81.6</av:Size>
-                                  <av:PointCollection x:Key="ConnectorLocation">690,690.8000000000001 690,743.6</av:PointCollection>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <Assign DisplayName="Assign Prepared By" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_12">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="x:String">[strPreparedBy]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="x:String">Robot</InArgument>
-                                </Assign.Value>
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                              </Assign>
-                              <FlowStep.Next>
-                                <FlowStep x:Name="__ReferenceID9">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <av:Point x:Key="ShapeLocation">590,743.6</av:Point>
-                                      <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-                                      <av:PointCollection x:Key="ConnectorLocation">690,796.4 690,826.4 689.8,826.4 689.8,854</av:PointCollection>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:LogMessage DisplayName="Log Message - Prepared By" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;PreparedBy: &quot;+strPreparedBy]">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:LogMessage>
-                                  <FlowStep.Next>
-                                    <FlowStep x:Name="__ReferenceID2">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <av:Point x:Key="ShapeLocation">473,854</av:Point>
-                                          <av:Size x:Key="ShapeSize">433.6,81.6</av:Size>
-                                          <av:PointCollection x:Key="ConnectorLocation">689.8,935.6 689.8,975.6</av:PointCollection>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                      <Assign DisplayName="Assign  Date Prepared" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_14">
-                                        <Assign.To>
-                                          <OutArgument x:TypeArguments="x:String">[strDatePrepared]</OutArgument>
-                                        </Assign.To>
-                                        <Assign.Value>
-                                          <InArgument x:TypeArguments="x:String">[Date.Now.ToString("dd/MM/yyyy")]</InArgument>
-                                        </Assign.Value>
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </Assign>
-                                      <FlowStep.Next>
-                                        <FlowStep x:Name="__ReferenceID10">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <av:Point x:Key="ShapeLocation">589.8,975.6</av:Point>
-                                              <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-                                              <av:PointCollection x:Key="ConnectorLocation">689.8,1028.4 689.8,1085.6</av:PointCollection>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                          <ui:LogMessage DisplayName="Log Message - Date Prepared" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Date Prepared: &quot;+strDatePrepared]">
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                          </ui:LogMessage>
-                                          <FlowStep.Next>
-                                            <FlowStep x:Name="__ReferenceID3">
-                                              <sap:WorkflowViewStateService.ViewState>
-                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <av:Point x:Key="ShapeLocation">473,1085.6</av:Point>
-                                                  <av:Size x:Key="ShapeSize">433.6,81.6</av:Size>
-                                                  <av:PointCollection x:Key="ConnectorLocation">689.8,1167.1999999999998 689.8,1207.1999999999998</av:PointCollection>
-                                                </scg:Dictionary>
-                                              </sap:WorkflowViewStateService.ViewState>
-                                              <Assign DisplayName="Assign Financial year" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_15">
-                                                <Assign.To>
-                                                  <OutArgument x:TypeArguments="x:String">[strFinancialYear]</OutArgument>
-                                                </Assign.To>
-                                                <Assign.Value>
-                                                  <InArgument x:TypeArguments="x:String">[Date.Now.ToString("yy")+"_"+Date.Now.AddYears(1).ToString("yy")]</InArgument>
-                                                </Assign.Value>
-                                                <sap:WorkflowViewStateService.ViewState>
-                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                  </scg:Dictionary>
-                                                </sap:WorkflowViewStateService.ViewState>
-                                              </Assign>
-                                              <FlowStep.Next>
-                                                <FlowStep x:Name="__ReferenceID12">
-                                                  <sap:WorkflowViewStateService.ViewState>
-                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                      <av:Point x:Key="ShapeLocation">589.8,1207.1999999999998</av:Point>
-                                                      <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-                                                      <av:PointCollection x:Key="ConnectorLocation">689.8,1259.9999999999998 689.8,1297.2</av:PointCollection>
-                                                    </scg:Dictionary>
-                                                  </sap:WorkflowViewStateService.ViewState>
-                                                  <ui:LogMessage DisplayName="Log Message - Financial Year" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Financial Year: &quot;+strFinancialYear]">
-                                                    <sap:WorkflowViewStateService.ViewState>
-                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                      </scg:Dictionary>
-                                                    </sap:WorkflowViewStateService.ViewState>
-                                                  </ui:LogMessage>
-                                                  <FlowStep.Next>
-                                                    <FlowStep x:Name="__ReferenceID4">
-                                                      <sap:WorkflowViewStateService.ViewState>
-                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <av:Point x:Key="ShapeLocation">473,1297.2</av:Point>
-                                                          <av:Size x:Key="ShapeSize">433.6,81.6</av:Size>
-                                                          <av:PointCollection x:Key="ConnectorLocation">689.8,1378.8 689.8,1413.6</av:PointCollection>
-                                                        </scg:Dictionary>
-                                                      </sap:WorkflowViewStateService.ViewState>
-                                                      <Assign DisplayName="Assign DocumentDate" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_16">
-                                                        <Assign.To>
-                                                          <OutArgument x:TypeArguments="x:String">[strDocumentDate]</OutArgument>
-                                                        </Assign.To>
-                                                        <Assign.Value>
-                                                          <InArgument x:TypeArguments="x:String">[Date.Now.ToString("dd/MM/yyyy")]</InArgument>
-                                                        </Assign.Value>
-                                                        <sap:WorkflowViewStateService.ViewState>
-                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                          </scg:Dictionary>
-                                                        </sap:WorkflowViewStateService.ViewState>
-                                                      </Assign>
-                                                      <FlowStep.Next>
-                                                        <FlowStep x:Name="__ReferenceID11">
-                                                          <sap:WorkflowViewStateService.ViewState>
-                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                              <av:Point x:Key="ShapeLocation">589.8,1413.6</av:Point>
-                                                              <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-                                                              <av:PointCollection x:Key="ConnectorLocation">689.8,1466.3999999999999 689.8,1508.8</av:PointCollection>
-                                                            </scg:Dictionary>
-                                                          </sap:WorkflowViewStateService.ViewState>
-                                                          <ui:LogMessage DisplayName="Log Message - Document Date" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Document Date: &quot;+strDocumentDate]">
-                                                            <sap:WorkflowViewStateService.ViewState>
-                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                              </scg:Dictionary>
-                                                            </sap:WorkflowViewStateService.ViewState>
-                                                          </ui:LogMessage>
-                                                          <FlowStep.Next>
-                                                            <FlowStep x:Name="__ReferenceID5">
-                                                              <sap:WorkflowViewStateService.ViewState>
-                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                  <av:Point x:Key="ShapeLocation">473,1508.8</av:Point>
-                                                                  <av:Size x:Key="ShapeSize">433.6,81.6</av:Size>
-                                                                  <av:PointCollection x:Key="ConnectorLocation">689.8,1590.3999999999999 689.8,1633.6</av:PointCollection>
-                                                                </scg:Dictionary>
-                                                              </sap:WorkflowViewStateService.ViewState>
-                                                              <Assign DisplayName="Assign PostingPeriod" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_17">
-                                                                <Assign.To>
-                                                                  <OutArgument x:TypeArguments="x:String">[strPostingPeriod]</OutArgument>
-                                                                </Assign.To>
-                                                                <Assign.Value>
-                                                                  <InArgument x:TypeArguments="x:String">[in_strFiscalMonth]</InArgument>
-                                                                </Assign.Value>
-                                                                <sap:WorkflowViewStateService.ViewState>
-                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                  </scg:Dictionary>
-                                                                </sap:WorkflowViewStateService.ViewState>
-                                                              </Assign>
-                                                              <FlowStep.Next>
-                                                                <FlowStep x:Name="__ReferenceID13">
-                                                                  <sap:WorkflowViewStateService.ViewState>
-                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                      <av:Point x:Key="ShapeLocation">589.8,1633.6</av:Point>
-                                                                      <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-                                                                      <av:PointCollection x:Key="ConnectorLocation">689.8,1686.3999999999999 689.8,1740.3999999999999</av:PointCollection>
-                                                                    </scg:Dictionary>
-                                                                  </sap:WorkflowViewStateService.ViewState>
-                                                                  <ui:LogMessage DisplayName="Log Message - Posting Period" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[&quot;Posting Period: &quot;+strPostingPeriod]">
-                                                                    <sap:WorkflowViewStateService.ViewState>
-                                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                      </scg:Dictionary>
-                                                                    </sap:WorkflowViewStateService.ViewState>
-                                                                  </ui:LogMessage>
-                                                                  <FlowStep.Next>
-                                                                    <FlowStep x:Name="__ReferenceID6">
-                                                                      <sap:WorkflowViewStateService.ViewState>
-                                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                          <av:Point x:Key="ShapeLocation">589.8,1740.3999999999999</av:Point>
-                                                                          <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-                                                                          <av:PointCollection x:Key="ConnectorLocation">1760,386.40000000000003 1760,416.40000000000003 1759.8,416.40000000000003 1759.8,436.40000000000003</av:PointCollection>
-                                                                        </scg:Dictionary>
-                                                                      </sap:WorkflowViewStateService.ViewState>
-                                                                      <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - Headers" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_6" InstanceCachePeriod="3000" WorkbookPath="[in_strTemplatePath]">
-                                                                        <ui:ExcelApplicationScope.Body>
-                                                                          <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-                                                                            <ActivityAction.Argument>
-                                                                              <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-                                                                            </ActivityAction.Argument>
-                                                                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,968" sap2010:WorkflowViewState.IdRef="Sequence_9">
-                                                                              <sap:WorkflowViewStateService.ViewState>
-                                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                                </scg:Dictionary>
-                                                                              </sap:WorkflowViewStateService.ViewState>
-                                                                              <ui:ExcelWriteCell Cell="F13" DisplayName="Write Cell - Journal Text Header" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="Header" Text="[strJournalHeaderText]" />
-                                                                              <ui:ExcelWriteCell Cell="F14" DisplayName="Write Cell -Reference" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="Header" Text="[strReference]" />
-                                                                              <ui:ExcelWriteCell Cell="F15" DisplayName="Write Cell - Prepared By" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_3" SheetName="Header" Text="[strPreparedBy]" />
-                                                                              <ui:ExcelWriteCell Cell="H15" DisplayName="Write Cell -  Date prepared" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_4" SheetName="Header" Text="[strDatePrepared]" />
-                                                                              <ui:ExcelWriteCell Cell="B9" DisplayName="Write Cell - Financial year" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_5" SheetName="Header" Text="[strFinancialYear]" />
-                                                                              <ui:ExcelWriteCell Cell="B13" DisplayName="Write Cell - Document Date" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_6" SheetName="Header" Text="[strDocumentDate]" />
-                                                                              <ui:ExcelWriteCell Cell="B16" DisplayName="Write Cell - strPostingPeriod" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_7" SheetName="Header" Text="[strPostingPeriod]" />
-                                                                            </Sequence>
-                                                                          </ActivityAction>
-                                                                        </ui:ExcelApplicationScope.Body>
-                                                                        <sap:WorkflowViewStateService.ViewState>
-                                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                          </scg:Dictionary>
-                                                                        </sap:WorkflowViewStateService.ViewState>
-                                                                      </ui:ExcelApplicationScope>
-                                                                    </FlowStep>
-                                                                  </FlowStep.Next>
-                                                                </FlowStep>
-                                                              </FlowStep.Next>
-                                                            </FlowStep>
-                                                          </FlowStep.Next>
-                                                        </FlowStep>
-                                                      </FlowStep.Next>
-                                                    </FlowStep>
-                                                  </FlowStep.Next>
-                                                </FlowStep>
-                                              </FlowStep.Next>
-                                            </FlowStep>
-                                          </FlowStep.Next>
-                                        </FlowStep>
-                                      </FlowStep.Next>
-                                    </FlowStep>
-                                  </FlowStep.Next>
-                                </FlowStep>
-                              </FlowStep.Next>
-                            </FlowStep>
-                          </FlowStep.Next>
-                        </FlowStep>
-                      </FlowStep.Next>
-                    </FlowStep>
-                  </FlowStep.Next>
-                </FlowStep>
-              </FlowStep.Next>
-            </FlowStep>
-            <x:Reference>__ReferenceID0</x:Reference>
-            <x:Reference>__ReferenceID1</x:Reference>
-            <x:Reference>__ReferenceID2</x:Reference>
-            <x:Reference>__ReferenceID3</x:Reference>
-            <x:Reference>__ReferenceID4</x:Reference>
-            <x:Reference>__ReferenceID5</x:Reference>
-            <x:Reference>__ReferenceID6</x:Reference>
-            <x:Reference>__ReferenceID7</x:Reference>
-            <x:Reference>__ReferenceID8</x:Reference>
-            <x:Reference>__ReferenceID9</x:Reference>
-            <x:Reference>__ReferenceID10</x:Reference>
-            <x:Reference>__ReferenceID11</x:Reference>
-            <x:Reference>__ReferenceID12</x:Reference>
-            <x:Reference>__ReferenceID13</x:Reference>
-          </Flowchart>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
   </Sequence>
 </Activity>

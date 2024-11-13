@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="AfterResume" this:AfterResume.in_strInvoiceFilePath="I:\Group\RPA\Ui Path Code\Alexandra\PRC_Recharges_ValidationStation\Temp\Invoice Report June 24 1000059084 2200410167 - Copy.xlsx" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="AfterResume" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_strInvoiceFilePath" Type="InArgument(x:String)" />
@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1054.4,2405.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1055.2,2117.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AfterResume_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -145,9 +145,8 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Recharges - Copy Data In Template" sap:VirtualizedContainerService.HintSize="545.6,2340.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Steps done in this workflow:&#xA;1. Read Summary and Users tabs from Invoice file&#xA;2. Add Phone Number column to Users datatable&#xA;3. Populate Phone Number column with formula&#xA;4. Write Back up and Data Received tabs from Template&#xA;" DisplayName="Recharges - 3.1 Copy Data In Template" sap:VirtualizedContainerService.HintSize="545.6,2052.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Default="Recharges - Copy Data In Template" Name="strSubProcessName" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtSummary" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtUsers" />
     </Sequence.Variables>
@@ -157,7 +156,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - Invoice" sap:VirtualizedContainerService.HintSize="483.2,381.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_strInvoiceFilePath]">
+    <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Excel Application Scope - Invoice" sap:VirtualizedContainerService.HintSize="483.2,381.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" SensitivityOperation="None" WorkbookPath="[in_strInvoiceFilePath]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -181,13 +180,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:ExcelReadRange>
-            <ui:ExcelReadRange AddHeaders="True" DataTable="[dtUsers]" DisplayName="Read Range - Users" sap:VirtualizedContainerService.HintSize="387.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_4" SheetName="[in_Config(&quot;InvoiceUsersSheetName&quot;).ToString]">
-              <ui:ExcelReadRange.Range>
-                <InArgument x:TypeArguments="x:String">
-                  <Literal x:TypeArguments="x:String" Value="" />
-                </InArgument>
-              </ui:ExcelReadRange.Range>
-            </ui:ExcelReadRange>
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[dtUsers]" DisplayName="Read Range - Users" sap:VirtualizedContainerService.HintSize="387.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_4" Range="A1" SheetName="[in_Config(&quot;InvoiceUsersSheetName&quot;).ToString]" />
           </Sequence>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
@@ -198,20 +191,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <ui:LogMessage DisplayName="Log Messag - Success DT Summary" sap:VirtualizedContainerService.HintSize="483.2,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Summary table successfully extracted. Number of rows: &quot;+dtSummary.RowCount.ToString]">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:LogMessage>
-    <ui:LogMessage DisplayName="Log Messag - Success DT Users" sap:VirtualizedContainerService.HintSize="483.2,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Users table successfully extracted. Number of rows: &quot;+dtUsers.RowCount.ToString]">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:LogMessage>
     <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" sap2010:Annotation.AnnotationText="The Template contains a a Phone Number Column that does not existin the invoice template. We need to add it to the dtUsers" ColumnName="Phone Number" DataTable="[dtUsers]" DisplayName="Add Data Column - Phone number" sap:VirtualizedContainerService.HintSize="483.2,248" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -240,11 +219,9 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <ui:InvokeCode ContinueOnError="{x:Null}" Code="dtUsers.AsEnumerable().ToList().ForEach(Sub(row) row(&quot;Phone Number&quot;) = If(row(&quot;User Id&quot;).ToString().Length &gt;= 12, row(&quot;User Id&quot;).ToString().Substring(0, 12), row(&quot;User Id&quot;).ToString()))&#xD;&#xA;dtUsers.Rows.RemoveAt(dtUsers.rows.count-1)&#xD;&#xA;dtUsers.Rows.RemoveAt(dtUsers.rows.count-1)&#xD;&#xA;" DisplayName="Invoke Code - Add Phone Number Data" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
+        <ui:InvokeCode ContinueOnError="{x:Null}" Code="'Extract first 12 numbers from column User Id to populate column Phone Number&#xD;&#xA;dtUsers.AsEnumerable().ToList().ForEach(Sub(row) row(&quot;Phone Number&quot;) = If(row(&quot;User Id&quot;).ToString().Length &gt;= 12, row(&quot;User Id&quot;).ToString().Substring(0, 12), row(&quot;User Id&quot;).ToString()))" DisplayName="Invoke Code - Add Phone Number Data" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_3">
           <ui:InvokeCode.Arguments>
-            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="dtUsers">
-              <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtUsers" />
-            </InOutArgument>
+            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="dtUsers">[dtUsers]</InOutArgument>
           </ui:InvokeCode.Arguments>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -270,7 +247,7 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - Template Path" sap:VirtualizedContainerService.HintSize="483.2,437.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" WorkbookPath="[in_strTemplatePath]">
+    <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Excel Application Scope - Template Path" sap:VirtualizedContainerService.HintSize="483.2,437.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" SensitivityOperation="None" WorkbookPath="[in_strTemplatePath]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>

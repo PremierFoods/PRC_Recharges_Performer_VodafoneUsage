@@ -21,7 +21,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1054.4,1300.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1055.2,1743.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>O365_SendEmail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -124,7 +124,7 @@
       <AssemblyReference>NPOI</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="O365_SendEmail" sap:VirtualizedContainerService.HintSize="649.6,1236" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="O365_SendEmail" sap:VirtualizedContainerService.HintSize="649.6,1678.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strAppID" />
       <Variable x:TypeArguments="ss:SecureString" Name="sstrSecret" />
@@ -141,7 +141,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:GetRobotCredential>
-    <uma:Office365ApplicationScope ApplicationSecret="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="[strAppID]" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DisplayName="Microsoft 365 Scope Send Email" Environment="Global" sap:VirtualizedContainerService.HintSize="587.2,940.8" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_2" ImpersonatedUserEmailAddress="[in_Config(&quot;Royalties_Mail_Account&quot;).ToString]" OAuthApplication="UiPath" RuntimeItemInputMode="Browse" SecureApplicationSecret="[sstrSecret]" TenantId="[in_Config(&quot;Asset_TenantID&quot;).ToString]" UseConnectionService="False">
+    <uma:Office365ApplicationScope ApplicationSecret="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="[strAppID]" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DisplayName="Microsoft 365 Scope Send Email" Environment="Global" sap:VirtualizedContainerService.HintSize="587.2,1383.2" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_2" ImpersonatedUserEmailAddress="[in_Config(&quot;Recharges_Mail_Account&quot;).ToString]" OAuthApplication="UiPath" RuntimeItemInputMode="Browse" SecureApplicationSecret="[sstrSecret]" TenantId="[in_Config(&quot;Asset_TenantID&quot;).ToString]" UseConnectionService="False">
       <uma:Office365ApplicationScope.AuthenticationScopes>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
       </uma:Office365ApplicationScope.AuthenticationScopes>
@@ -150,13 +150,13 @@
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ParentScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="553.6,715.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="553.6,1157.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[in_arrFilePaths Is Nothing]" DisplayName="If Path is Empty" sap:VirtualizedContainerService.HintSize="510.4,625.6" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[in_arrFilePaths Is Nothing]" DisplayName="If Path is Empty" sap:VirtualizedContainerService.HintSize="510.4,1068" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -170,7 +170,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="[in_Config(&quot;Royalties_Mail_Account&quot;).ToString]" AuthScopesInvalid="False" Body="[in_strMailBody]" DisplayName="Send Mail - Without Attachments in_strFilePath" sap:VirtualizedContainerService.HintSize="433.6,352.8" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="High" IsBodyHTML="True" IsDraft="False" Subject="[in_strMailSubject]" To="[in_strMailTo.Split(&quot;;&quot;).Select(Function(x) x.Trim()).ToArray()]">
+                  <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="[in_Config(&quot;Recharges_Mail_Account&quot;).ToString]" AuthScopesInvalid="False" Body="[in_strMailBody]" DisplayName="Send Mail - Without Attachments in_strFilePath" sap:VirtualizedContainerService.HintSize="433.6,352.8" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="High" IsBodyHTML="True" IsDraft="False" Subject="[in_strMailSubject]" To="[in_strMailTo.Split(&quot;;&quot;).Select(Function(x) x.Trim()).ToArray()]">
                     <umam:SendMail.Attachments>
                       <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                     </umam:SendMail.Attachments>
@@ -190,7 +190,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <umam:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="[in_Config(&quot;Royalties_Mail_Account&quot;).ToString]" AttachmentsCollection="[in_arrFilePaths]" AuthScopesInvalid="False" Body="[in_strMailBody]" DisplayName="Send Mail - With Attachments" sap:VirtualizedContainerService.HintSize="433.6,352.8" sap2010:WorkflowViewState.IdRef="SendMail_2" Importance="High" IsBodyHTML="True" IsDraft="False" Subject="[in_strMailSubject]" To="[in_strMailTo.Split(&quot;;&quot;).Select(Function(x) x.Trim()).ToArray()]">
+                  <umam:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="[in_Config(&quot;Recharges_Mail_Account&quot;).ToString]" AttachmentsCollection="[in_arrFilePaths]" AuthScopesInvalid="False" Body="[in_strMailBody]" DisplayName="Send Mail - With Attachments" sap:VirtualizedContainerService.HintSize="433.6,352.8" sap2010:WorkflowViewState.IdRef="SendMail_2" Importance="High" IsBodyHTML="True" IsDraft="False" Subject="[in_strMailSubject]" To="[in_strMailTo.Split(&quot;;&quot;).Select(Function(x) x.Trim()).ToArray()]">
                     <umam:SendMail.Attachments>
                       <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
                     </umam:SendMail.Attachments>

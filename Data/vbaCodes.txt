@@ -112,3 +112,16 @@ Sub CopyColumnDataInRange(worksheet as String, sourceColumn as string, targetCol
     Next i
 
 End Sub
+
+Sub RemoveDuplicatesInColumn(worksheet as string)
+    Dim ws As Worksheet
+    Set ws = ThisWorkbook.Sheets(worksheet) ' Change "Sheet1" to your sheet name
+
+    ' Define the range you want to check for duplicates (e.g., Column A)
+    Dim lastRow As Long
+    lastRow = ws.Cells(ws.Rows.Count, "C").End(xlUp).Row ' Find the last used row in Column A
+
+    ' Remove duplicates in Column A
+    ws.Range("C7:C" & lastRow).RemoveDuplicates Columns:=1, Header:=xlYes
+End Sub
+

@@ -33,6 +33,7 @@
       "Path": "Framework/Process.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "out_strMailBody&Sequence_1",
         "dtDataForJournal&Sequence_1",
         "strPeriod&Sequence_1",
         "dtPivotTable&Sequence_1"
@@ -49,8 +50,7 @@
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
         "dtUsers&Sequence_1",
-        "dtSummary&Sequence_1",
-        "strSubProcessName&Sequence_1"
+        "dtSummary&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_Config",
@@ -64,13 +64,9 @@
       "Path": "SubProcesses/Recharges - 3.2 Create Active List.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "rowData&Sequence_1",
-        "intRowIndex&Sequence_1",
         "dtUnprocessedActiveList&Sequence_1",
         "dtActiveList&Sequence_1",
-        "strSheetName&Sequence_5",
-        "strSubProcessName&Sequence_1",
-        "strSheetName&Sequence_3"
+        "strSheetName&Sequence_5"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_Config",
@@ -84,14 +80,12 @@
       "Path": "SubProcesses/Recharges - 3.3 Identify Cost Center.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "strMailBody&Sequence_1",
-        "dtMissingCC&Sequence_1",
+        "dtMapping&Sequence_1",
         "dtActiveList&Sequence_1",
-        "intRowIndex&Sequence_1",
-        "dtDataReceived&Sequence_1",
-        "strSubProcessName&Sequence_1"
+        "dtDataReceived&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
+        "out_strMailBody",
         "in_Config",
         "in_strInvoiceFilePath",
         "in_strTemplatePath"
@@ -151,23 +145,68 @@
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
         "strSubProcessName&Sequence_1",
-        "dtDataReceived&Sequence_1",
-        "dtSummaryData&Flowchart_1",
-        "intRowIndex&Flowchart_1",
-        "strJournalHeaderText&Flowchart_1",
-        "strReference&Flowchart_1",
-        "strPreparedBy&Flowchart_1",
-        "strDatePrepared&Flowchart_1",
-        "strFinancialYear&Flowchart_1",
-        "strDocumentDate&Flowchart_1",
-        "strPostingPeriod&Flowchart_1"
+        "dtDataReceived&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_Config",
         "in_strTemplatePath",
         "in_strFiscalYear",
-        "in_strFiscalMonth",
-        "in_strAttachmentMonth"
+        "in_strFiscalMonth"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/InitAllSettings.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dt_SettingsAndConstants&Sequence_5",
+        "dt_Assets&Sequence_6",
+        "AssetValue&Sequence_11"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_ConfigFile",
+        "in_ConfigSheets",
+        "out_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "SubProcesses/O365_SendEmail.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strAppID&Sequence_1",
+        "sstrSecret&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_strMailTo",
+        "in_strMailBody",
+        "in_strMailSubject",
+        "in_arrFilePaths"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/SetTransactionStatus.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "QueueRetry&Sequence_17",
+        "ScreenshotPath&Sequence_17"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_BusinessException",
+        "in_TransactionField1",
+        "in_TransactionField2",
+        "in_TransactionID",
+        "in_SystemException",
+        "in_Config",
+        "in_TransactionItem",
+        "io_RetryNumber",
+        "io_TransactionNumber",
+        "io_ConsecutiveSystemExceptions"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null

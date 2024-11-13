@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="AfterResume" this:AfterResume.in_strTemplatePath="I:\Group\RPA\Ui Path Code\Alexandra\PRC_Recharges_Performer_VodafoneUsage\Data\Temp\Vodafone Usage Template.xlsx" this:AfterResume.in_strPeriod="6" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="AfterResume" this:AfterResume.in_strTemplatePath="I:\Group\RPA\Ui Path Code\Alexandra\PRC_Recharges_Performer_VodafoneUsage\Data\Temp\Vodafone Usage Template.xlsx" this:AfterResume.in_strPeriod="6" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_strTemplatePath" Type="InArgument(x:String)" />
@@ -13,7 +13,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1054.4,1584</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1055.2,1953.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AfterResume_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -69,6 +69,7 @@
       <x:String>UiPath.UIAutomationNext.Activities.Triggers</x:String>
       <x:String>UiPath.Platform.Triggers.Scope</x:String>
       <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -150,7 +151,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Recharges - 3.5 Update Data for Journal" sap:VirtualizedContainerService.HintSize="545.6,1519.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Steps done in this workflow:&#xA;1. Write fiscal text in cell A1 from Data for Journal tab&#xA;2. Write Pivot data in Data for Journal tab&#xA;3. Read first 3 columns from Data for Journal tab&#xA;4. Add all Cost centers from column Row Labels to column ALL CC's&#xA;5. Write new table in Data for Journal&#xA;6. Extend formulas in column &#xA;" DisplayName="Recharges - 3.5 Update Data for Journal" sap:VirtualizedContainerService.HintSize="545.6,1888.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="Recharges - 3.4 Update Summary Data" Name="strSubProcessName" />
     </Sequence.Variables>
@@ -160,19 +161,19 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:WriteCell Cell="[in_Config(&quot;VodafoneFiscalTextRange&quot;).ToString]" DisplayName="Write Fiscal text into cell A1" sap:VirtualizedContainerService.HintSize="483.2,116" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="[in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString]" Text="[string.Format(in_Config(&quot;VodafoneFiscalText&quot;).ToString,in_strPeriod,in_strYear.Substring(1,3))]" WorkbookPath="[in_strTemplatePath]" />
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - Vodafone usage" sap:VirtualizedContainerService.HintSize="483.2,409.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_7" InstanceCachePeriod="3000" WorkbookPath="[in_strTemplatePath]">
+    <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Excel Application Scope - Vodafone usage" sap:VirtualizedContainerService.HintSize="483.2,537.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_7" InstanceCachePeriod="3000" SensitivityOperation="None" WorkbookPath="[in_strTemplatePath]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,300" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,428" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelWriteCell Cell="[in_Config(&quot;VodafoneFiscalTextRange&quot;).ToString]" DisplayName="Write Cell Fiscal text in A1" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="[in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString]" Text="[string.Format(in_Config(&quot;VodafoneFiscalText&quot;).ToString,in_strPeriod,in_strYear.Substring(1,3))]" />
             <ui:ExcelWriteRange AddHeaders="False" DataTable="[in_dtPivotTable.DefaultView.ToTable(False,&quot;Row Labels&quot;,&quot;Sum of Net total (£)&quot;)]" DisplayName="Write Range - Data for Journal" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_5" SheetName="[in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString]" StartingCell="[in_Config(&quot;VodafoneDataForJournalWriteRange&quot;).ToString]" />
             <ui:ExcelReadRange AddHeaders="True" DataTable="[out_dtDataForJournal]" DisplayName="Read Range - Data for Journal" sap:VirtualizedContainerService.HintSize="387.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_10" Range="[in_Config(&quot;VodafoneDataForJournalReadRange&quot;).ToString]" SheetName="[in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString]" />
           </Sequence>
@@ -184,26 +185,47 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <ui:InvokeCode ContinueOnError="{x:Null}" Code="For Each row As DataRow In io_dtDataForJournal.Rows&#xD;&#xA;        row(&quot;ALL CC's&quot;) = row(&quot;Row Labels&quot;).ToString&#xD;&#xA;Next&#xD;&#xA;&#xD;&#xA;io_dtDataForJournal = io_dtDataForJournal.AsEnumerable().GroupBy(Function(row) row.Field(Of String)(&quot;ALL CC's&quot;)).Select(Function(g) g.First()).CopyToDataTable()" DisplayName="Add missing CCs from Row Labels to All CC's" sap:VirtualizedContainerService.HintSize="483.2,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
-      <ui:InvokeCode.Arguments>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtDataForJournal">[out_dtDataForJournal]</InOutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strColumnName">[string.Format(in_Config("VodafoneActualChargeColumnName").ToString,in_strPeriod)]</InArgument>
-      </ui:InvokeCode.Arguments>
-    </ui:InvokeCode>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scop - Vodafone Usage File" sap:VirtualizedContainerService.HintSize="483.2,565.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_6" InstanceCachePeriod="3000" WorkbookPath="[in_strTemplatePath]">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="483.2,325.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <ui:InvokeCode ContinueOnError="{x:Null}" Code="For Each row As DataRow In io_dtDataForJournal.Rows&#xA;&#x9;row(&quot;ALL CC's&quot;) = row(&quot;Row Labels&quot;).ToString.Trim&#xA;Next&#xA;&#xA;io_dtDataForJournal = io_dtDataForJournal.AsEnumerable().GroupBy(Function(row) row.Field(Of String)(&quot;ALL CC's&quot;)).Select(Function(g) g.First()).CopyToDataTable()&#xA;" DisplayName="Add missing CCs from Row Labels to All CC's" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+          <ui:InvokeCode.Arguments>
+            <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtDataForJournal">[out_dtDataForJournal]</InOutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_strColumnName">[string.Format(in_Config("VodafoneActualChargeColumnName").ToString,in_strPeriod)]</InArgument>
+          </ui:InvokeCode.Arguments>
+        </ui:InvokeCode>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,160.8" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Throw DisplayName="Throw Inner Exception" Exception="[new SystemException(exception.InnerException.Message)]" sap:VirtualizedContainerService.HintSize="334.4,90.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Excel Application Scop - Vodafone Usage File" sap:VirtualizedContainerService.HintSize="483.2,693.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_6" InstanceCachePeriod="3000" SensitivityOperation="None" WorkbookPath="[in_strTemplatePath]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,456" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,584" sap2010:WorkflowViewState.IdRef="Sequence_9">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:ExcelWriteRange AddHeaders="False" DataTable="[out_dtDataForJournal.DefaultView.ToTable(False,&quot;Row Labels&quot;,&quot;Sum of Net total (£)&quot;,&quot;ALL CC's&quot;)]" DisplayName="Write Range - Data for Journal" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_6" SheetName="[in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString]" StartingCell="[in_Config(&quot;VodafoneDataForJournalWriteRange&quot;).ToString]" />
-            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_Config(&quot;vbaCodes&quot;).ToString]" DisplayName="Invoke VBA - Extend Formula" EntryMethodName="[in_Config(&quot;vbaExtendFormula&quot;).ToString]" EntryMethodParameters="[{in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString,in_dtPivotTable.rows.Count.ToString}]" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_1" />
+            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_Config(&quot;vbaCodes&quot;).ToString]" DisplayName="Invoke VBA - Extend Formula" EntryMethodName="[in_Config(&quot;vbaExtendFormula&quot;).ToString]" EntryMethodParameters="[{in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString,in_dtPivotTable.rows.Count.ToString}]" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_3" />
+            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_Config(&quot;vbaCodes&quot;).ToString]" DisplayName="Invoke VBA - Remove Duplicates in Column C" EntryMethodName="[in_Config(&quot;vbaRemoveDuplicatesInColumn&quot;).ToString]" EntryMethodParameters="[{in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString}]" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_1" />
             <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_Config(&quot;vbaCodes&quot;).ToString]" DisplayName="Invoke VBA - CopyColumnDataInRange" EntryMethodName="[in_Config(&quot;vbaCopyColumnDataInRange&quot;).ToString]" EntryMethodParameters="[{in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString,&quot;Current data Charge&quot;,string.Format(in_Config(&quot;VodafoneActualChargeColumnName&quot;).ToString,in_strPeriod)}]" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_2" />
           </Sequence>
         </ActivityAction>
