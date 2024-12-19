@@ -63,6 +63,14 @@ Sub ExtendFormula(worksheet as String, lastRow as Long)
 
     	' Extend the formula down to the last row
     	formulaCell.AutoFill Destination:=ws.Range("B3:B" & lastRow)
+ 
+       ' Set the cell that contains the initial formula
+    	Set formulaCell = ws.Range("E3")
+
+    	' Extend the formula down to the last row
+    	formulaCell.AutoFill Destination:=ws.Range("E3:E" & lastRow)
+
+
     	' Set the cell that contains the initial formula
     	Set formulaCell = ws.Range("I3")
 
@@ -125,3 +133,28 @@ Sub RemoveDuplicatesInColumn(worksheet as string)
     ws.Range("C7:C" & lastRow).RemoveDuplicates Columns:=1, Header:=xlYes
 End Sub
 
+Sub ExcludeSpecificValueInPivot(worksheet as string, excludeList as string, pivotName as string, pivotField as string)
+    Dim ws As Worksheet
+    Dim pt As PivotTable
+    Dim pf As PivotField
+    Dim pi As PivotItem
+
+    ' Set worksheet and pivot table
+    Set ws = ThisWorkbook.Worksheets(worksheet)
+    Set pt = ws.PivotTables(pivotName)
+    Set pf = pt.PivotFields(pivotField)
+
+'MsgBox "Field '" & pf & "' found in PivotTable '" & pt & "'."
+
+    ' Loop through each item in the pivot field
+    For Each pi In pf.PivotItems
+        pi.Visible = True
+        For j = LBound(split(excludeList,",")) To UBound(split(excludeList,","))
+            If pi.Name = split(excludeList,",")(j) Then
+		'MsgBox "Exclude '" & pi.Name & "' from PivotTable '" & pt & "'."
+                pi.Visible = False
+                Exit For
+            End If
+        Next j
+    Next pi
+End Sub

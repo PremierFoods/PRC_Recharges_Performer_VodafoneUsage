@@ -1,14 +1,22 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="AfterResume" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="AfterResume" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_strTemplatePath" Type="InArgument(x:String)" />
     <x:Property Name="in_strFiscalYear" Type="InArgument(x:String)" />
     <x:Property Name="in_strFiscalMonth" Type="InArgument(x:String)" />
+    <x:Property Name="in_strAttachmentMonth" Type="InArgument(x:String)" />
+    <x:Property Name="in_strYear" Type="InArgument(x:String)" />
   </x:Members>
+  <this:AfterResume.in_strAttachmentMonth>
+    <InArgument x:TypeArguments="x:String" />
+  </this:AfterResume.in_strAttachmentMonth>
+  <this:AfterResume.in_strYear>
+    <InArgument x:TypeArguments="x:String" />
+  </this:AfterResume.in_strYear>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1055.2,1554.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1055.2,2560.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AfterResume_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -145,7 +153,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Steps done in this workflow:&#xA;1. Write &quot;Robot&quot; in Prepared By cell&#xA;2. Write current date in Date Prepared cell&#xA;3. Write current date in Date authorized cell&#xA;4. Write current date in Date Posted cell&#xA;5. Write fiscal year in format [current year]_[current year + 1] (yy) in Financial year cell&#xA;6. Write current date in Document date cell&#xA;7. Write current date in Posting Date cell&#xA;8. Write fiscal month in Posting Month&#xA;" DisplayName="Recharges - 3.7 Update Header" sap:VirtualizedContainerService.HintSize="545.6,1489.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Steps done in this workflow:&#xA;1. Write &quot;Robot&quot; in Prepared By cell&#xA;2. Write current date in Date Prepared cell&#xA;3. Write current date in Date authorized cell&#xA;4. Write current date in Date Posted cell&#xA;5. Write fiscal year in format [current year]_[current year + 1] (yy) in Financial year cell&#xA;6. Write current date in Document date cell&#xA;7. Write current date in Posting Date cell&#xA;8. Write fiscal month in Posting Month&#xA;" DisplayName="Recharges - 3.7 Update Header" sap:VirtualizedContainerService.HintSize="568.8,2496" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="Recharges - 3.4 Update Summary Data" Name="strSubProcessName" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtDataReceived" />
@@ -156,26 +164,59 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Excel Application Scope - Headers" sap:VirtualizedContainerService.HintSize="483.2,1205.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_7" InstanceCachePeriod="3000" SensitivityOperation="None" WorkbookPath="[in_strTemplatePath]">
+    <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Excel Application Scope - Headers" sap:VirtualizedContainerService.HintSize="506.4,2212" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_7" InstanceCachePeriod="3000" SensitivityOperation="None" WorkbookPath="[in_strTemplatePath]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,1096" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="472.8,2102.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="strPostingDate" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelWriteCell Cell="[in_Config(&quot;PreparedByRange&quot;).ToString]" DisplayName="Write Cell - Prepared By" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_10" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[in_Config(&quot;PreparedByName&quot;).ToString]" />
-            <ui:ExcelWriteCell Cell="[in_Config(&quot;DatePreparedRange&quot;).ToString]" DisplayName="Write Cell -  Date prepared" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_11" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;dd/MM/yyyy&quot;)]" />
-            <ui:ExcelWriteCell Cell="[in_Config(&quot;DateAuthorizedRange&quot;).ToString]" DisplayName="Write Cell -  Date authorized" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_16" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;dd/MM/yyyy&quot;)]" />
-            <ui:ExcelWriteCell Cell="[in_Config(&quot;DatePostedRange&quot;).ToString]" DisplayName="Write Cell -  Date posted" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_17" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;dd/MM/yyyy&quot;)]" />
-            <ui:ExcelWriteCell Cell="[in_Config(&quot;FinancialYearRange&quot;).ToString]" DisplayName="Write Cell - Financial year" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_12" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;yy&quot;)+&quot;_&quot;+Date.Now.AddYears(1).ToString(&quot;yy&quot;)]" />
-            <ui:ExcelWriteCell Cell="[in_Config(&quot;DocumentDateRange&quot;).ToString]" DisplayName="Write Cell - Document Date" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_13" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;dd/MM/yyyy&quot;)]" />
-            <ui:ExcelWriteCell Cell="[in_Config(&quot;PostingDateRange&quot;).ToString]" DisplayName="Write Cell - Posting Date" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_18" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;MM/dd/yyyy&quot;)]" />
-            <ui:ExcelWriteCell Cell="[in_Config(&quot;PostingPeriodRange&quot;).ToString]" DisplayName="Write Cell - Posting Period" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_14" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[in_strFiscalMonth]" />
+            <ui:ExcelWriteCell Cell="[in_Config(&quot;VodafoneReferenceRange&quot;).ToString]" DisplayName="Write Cell - Refrence" sap:VirtualizedContainerService.HintSize="410.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_19" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[string.Format(in_Config(&quot;VodafoneReference&quot;).ToString,in_strAttachmentMonth,in_strYear.Substring(1,3))]" />
+            <ui:ExcelWriteCell Cell="[in_Config(&quot;PreparedByRange&quot;).ToString]" DisplayName="Write Cell - Prepared By" sap:VirtualizedContainerService.HintSize="410.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_10" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[in_Config(&quot;PreparedByName&quot;).ToString]" />
+            <If sap2010:Annotation.AnnotationText="The templates are sensitive to the date formats - if day is &lt; 13, the template reads the date as MM/dd/yyyy, instead of dd/MM/yyyy" Condition="[Date.Now.Day &lt; 13]" DisplayName="If current day is &lt; 13" sap:VirtualizedContainerService.HintSize="410.4,1350.4" sap2010:WorkflowViewState.IdRef="If_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376.8,561.6" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ExcelWriteCell Cell="[in_Config(&quot;DatePreparedRange&quot;).ToString]" DisplayName="Write Cell -  Date prepared" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_11" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;MM/dd/yyyy&quot;)]" />
+                  <ui:ExcelWriteCell Cell="[in_Config(&quot;DateAuthorizedRange&quot;).ToString]" DisplayName="Write Cell -  Date authorized" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_16" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;MM/dd/yyyy&quot;)]" />
+                  <ui:ExcelWriteCell Cell="[in_Config(&quot;DatePostedRange&quot;).ToString]" DisplayName="Write Cell -  Date posted" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_17" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;MM/dd/yyyy&quot;)]" />
+                  <ui:ExcelWriteCell Cell="[in_Config(&quot;DocumentDateRange&quot;).ToString]" DisplayName="Write Cell - Document Date" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_13" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;MM/dd/yyyy&quot;)]" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="376.8,561.6" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ExcelWriteCell Cell="[in_Config(&quot;DatePreparedRange&quot;).ToString]" DisplayName="Write Cell -  Date prepared" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_24" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;dd/MM/yyyy&quot;)]" />
+                  <ui:ExcelWriteCell Cell="[in_Config(&quot;DateAuthorizedRange&quot;).ToString]" DisplayName="Write Cell -  Date authorized" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_25" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;dd/MM/yyyy&quot;)]" />
+                  <ui:ExcelWriteCell Cell="[in_Config(&quot;DatePostedRange&quot;).ToString]" DisplayName="Write Cell -  Date posted" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_26" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;dd/MM/yyyy&quot;)]" />
+                  <ui:ExcelWriteCell Cell="[in_Config(&quot;DocumentDateRange&quot;).ToString]" DisplayName="Write Cell - Document Date" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_27" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;dd/MM/yyyy&quot;)]" />
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:ExcelWriteCell Cell="[in_Config(&quot;FinancialYearRange&quot;).ToString]" DisplayName="Write Cell - Financial year" sap:VirtualizedContainerService.HintSize="410.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_12" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;yy&quot;)+&quot;_&quot;+Date.Now.AddYears(1).ToString(&quot;yy&quot;)]" />
+            <ui:ExcelWriteCell Cell="[in_Config(&quot;PostingDateRange&quot;).ToString]" DisplayName="Write Cell - Posting Date" sap:VirtualizedContainerService.HintSize="410.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_18" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;MM/dd/yyyy&quot;)]" />
+            <ui:ExcelWriteCell Cell="[in_Config(&quot;PostingPeriodRange&quot;).ToString]" DisplayName="Write Cell - Posting Period" sap:VirtualizedContainerService.HintSize="410.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_14" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[in_strFiscalMonth]" />
           </Sequence>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>

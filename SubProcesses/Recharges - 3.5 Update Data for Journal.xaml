@@ -6,10 +6,14 @@
     <x:Property Name="in_dtPivotTable" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_strYear" Type="InArgument(x:String)" />
     <x:Property Name="out_dtDataForJournal" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="in_strAttachmentMonth" Type="InArgument(x:String)" />
   </x:Members>
   <this:AfterResume.in_strYear>
     <InArgument x:TypeArguments="x:String" />
   </this:AfterResume.in_strYear>
+  <this:AfterResume.in_strAttachmentMonth>
+    <InArgument x:TypeArguments="x:String" />
+  </this:AfterResume.in_strAttachmentMonth>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
@@ -173,7 +177,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelWriteCell Cell="[in_Config(&quot;VodafoneFiscalTextRange&quot;).ToString]" DisplayName="Write Cell Fiscal text in A1" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="[in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString]" Text="[string.Format(in_Config(&quot;VodafoneFiscalText&quot;).ToString,in_strPeriod,in_strYear.Substring(1,3))]" />
+            <ui:ExcelWriteCell Cell="[in_Config(&quot;VodafoneFiscalTextRange&quot;).ToString]" DisplayName="Write Cell Fiscal text in A1" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="[in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString]" Text="[string.Format(in_Config(&quot;VodafoneFiscalText&quot;).ToString,in_strPeriod,in_strAttachmentMonth,in_strYear.Substring(1,3))]" />
             <ui:ExcelWriteRange AddHeaders="False" DataTable="[in_dtPivotTable.DefaultView.ToTable(False,&quot;Row Labels&quot;,&quot;Sum of Net total (£)&quot;)]" DisplayName="Write Range - Data for Journal" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_5" SheetName="[in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString]" StartingCell="[in_Config(&quot;VodafoneDataForJournalWriteRange&quot;).ToString]" />
             <ui:ExcelReadRange AddHeaders="True" DataTable="[out_dtDataForJournal]" DisplayName="Read Range - Data for Journal" sap:VirtualizedContainerService.HintSize="387.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_10" Range="[in_Config(&quot;VodafoneDataForJournalReadRange&quot;).ToString]" SheetName="[in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString]" />
           </Sequence>
