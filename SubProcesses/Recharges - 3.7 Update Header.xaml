@@ -16,7 +16,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1055.2,2560.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1370.4,2560.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AfterResume_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -214,7 +214,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <ui:ExcelWriteCell Cell="[in_Config(&quot;FinancialYearRange&quot;).ToString]" DisplayName="Write Cell - Financial year" sap:VirtualizedContainerService.HintSize="410.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_12" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;yy&quot;)+&quot;_&quot;+Date.Now.AddYears(1).ToString(&quot;yy&quot;)]" />
+            <ui:ExcelWriteCell Cell="[in_Config(&quot;FinancialYearRange&quot;).ToString]" DisplayName="Write Cell - Financial year" sap:VirtualizedContainerService.HintSize="410.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_12" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.AddYears(-1).ToString(&quot;yy&quot;)+&quot;_&quot;+Date.Now.ToString(&quot;yy&quot;)]" />
             <ui:ExcelWriteCell Cell="[in_Config(&quot;PostingDateRange&quot;).ToString]" DisplayName="Write Cell - Posting Date" sap:VirtualizedContainerService.HintSize="410.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_18" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[Date.Now.ToString(&quot;MM/dd/yyyy&quot;)]" />
             <ui:ExcelWriteCell Cell="[in_Config(&quot;PostingPeriodRange&quot;).ToString]" DisplayName="Write Cell - Posting Period" sap:VirtualizedContainerService.HintSize="410.4,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_14" SheetName="[in_Config(&quot;HeaderSheetName&quot;).ToString]" Text="[in_strFiscalMonth]" />
           </Sequence>
