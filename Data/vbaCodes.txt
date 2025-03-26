@@ -1,4 +1,4 @@
-Sub ExtendFormula(worksheet as String, lastRow as Long)
+﻿Sub ExtendFormula(worksheet as String, lastRow as Long)
     Dim formulaCell As Range
 
     ' Set the worksheet (change "Sheet1" to your sheet name)
@@ -147,8 +147,12 @@ Sub ExcludeSpecificValueInPivot(worksheet as string, excludeList as string, pivo
 'MsgBox "Field '" & pf & "' found in PivotTable '" & pt & "'."
 
     ' Loop through each item in the pivot field
+	
     For Each pi In pf.PivotItems
-        pi.Visible = True
+
+		if pi.Visible= False then
+		  pi.Visible = True
+               End If
         For j = LBound(split(excludeList,",")) To UBound(split(excludeList,","))
             If pi.Name = split(excludeList,",")(j) Then
 		'MsgBox "Exclude '" & pi.Name & "' from PivotTable '" & pt & "'."
