@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1055.2,706.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1370.4,712</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AfterResume_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -166,7 +166,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_Config(&quot;vbaCodes&quot;).ToString]" DisplayName="Invoke VBA - Extend Formula" EntryMethodName="[in_Config(&quot;vbaExtendFormula&quot;).ToString]" EntryMethodParameters="[{in_Config(&quot;VodafoneJournalSheetName&quot;).ToString,(in_dtDataForJournal.rows.Count+1).ToString}]" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_1" />
+            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_Config(&quot;vbaExtendFormulaCode&quot;).ToString]" DisplayName="Invoke VBA - Extend Formula" EntryMethodName="[in_Config(&quot;vbaExtendFormula&quot;).ToString]" EntryMethodParameters="[{in_Config(&quot;VodafoneJournalSheetName&quot;).ToString,(in_dtDataForJournal.rows.Count+1).ToString}]" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_1" />
           </Sequence>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>

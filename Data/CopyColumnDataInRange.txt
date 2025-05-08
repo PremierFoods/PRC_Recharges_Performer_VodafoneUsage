@@ -1,0 +1,28 @@
+Sub CopyColumnDataInRange(worksheet as String, sourceColumn as string, targetColumn as string)
+    Dim ws As Worksheet
+    Dim headerRow As Range
+    Dim sourceCol As Long
+    Dim targetCol As Long
+    Dim lastRow As Long
+    Dim i As Long
+
+    ' Set worksheet and header names
+    Set ws = ThisWorkbook.Sheets(worksheet)
+    
+    ' Set the header row
+    Set headerRow = ws.Rows(6)
+
+    ' Find the source and target columns by their header names
+    sourceCol = Application.Match(sourceColumn, headerRow, 0)
+    targetCol = Application.Match(targetColumn, headerRow, 0)
+
+
+    ' Find the last row with data in the source column
+    lastRow = ws.Cells(ws.Rows.Count, sourceCol).End(xlUp).Row
+
+    ' Loop through each row, starting from row 7 (to skip headers)
+    For i = 7 To lastRow
+        ws.Cells(i, targetCol).Value = ws.Cells(i, sourceCol).Value
+    Next i
+
+End Sub

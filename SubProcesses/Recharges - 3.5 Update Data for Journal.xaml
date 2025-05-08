@@ -17,7 +17,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1055.2,1953.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1370.4,1815.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AfterResume_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -155,7 +155,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Steps done in this workflow:&#xA;1. Write fiscal text in cell A1 from Data for Journal tab&#xA;2. Write Pivot data in Data for Journal tab&#xA;3. Read first 3 columns from Data for Journal tab&#xA;4. Add all Cost centers from column Row Labels to column ALL CC's&#xA;5. Write new table in Data for Journal&#xA;6. Extend formulas in column &#xA;" DisplayName="Recharges - 3.5 Update Data for Journal" sap:VirtualizedContainerService.HintSize="545.6,1888.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Steps done in this workflow:&#xA;1. Write fiscal text in cell A1 from Data for Journal tab&#xA;2. Write Pivot data in Data for Journal tab&#xA;3. Read first 3 columns from Data for Journal tab&#xA;4. Add all Cost centers from column Row Labels to column ALL CC's&#xA;5. Write new table in Data for Journal&#xA;6. Extend formulas in column &#xA;" DisplayName="Recharges - 3.5 Update Data for Journal" sap:VirtualizedContainerService.HintSize="545.6,1750.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="Recharges - 3.4 Update Summary Data" Name="strSubProcessName" />
     </Sequence.Variables>
@@ -189,7 +189,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="483.2,325.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="483.2,187.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
         <ui:InvokeCode ContinueOnError="{x:Null}" Code="For Each row As DataRow In io_dtDataForJournal.Rows&#xA;&#x9;row(&quot;ALL CC's&quot;) = row(&quot;Row Labels&quot;).ToString.Trim&#xA;Next&#xA;&#xA;io_dtDataForJournal = io_dtDataForJournal.AsEnumerable().GroupBy(Function(row) row.Field(Of String)(&quot;ALL CC's&quot;)).Select(Function(g) g.First()).CopyToDataTable()&#xA;" DisplayName="Add missing CCs from Row Labels to All CC's" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
           <ui:InvokeCode.Arguments>
@@ -199,10 +199,10 @@
         </ui:InvokeCode>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,160.8" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -228,9 +228,9 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:ExcelWriteRange AddHeaders="False" DataTable="[out_dtDataForJournal.DefaultView.ToTable(False,&quot;Row Labels&quot;,&quot;Sum of Net total (£)&quot;,&quot;ALL CC's&quot;)]" DisplayName="Write Range - Data for Journal" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_6" SheetName="[in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString]" StartingCell="[in_Config(&quot;VodafoneDataForJournalWriteRange&quot;).ToString]" />
-            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_Config(&quot;vbaCodes&quot;).ToString]" DisplayName="Invoke VBA - Extend Formula" EntryMethodName="[in_Config(&quot;vbaExtendFormula&quot;).ToString]" EntryMethodParameters="[{in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString,in_dtPivotTable.rows.Count.ToString}]" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_3" />
-            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_Config(&quot;vbaCodes&quot;).ToString]" DisplayName="Invoke VBA - Remove Duplicates in Column C" EntryMethodName="[in_Config(&quot;vbaRemoveDuplicatesInColumn&quot;).ToString]" EntryMethodParameters="[{in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString}]" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_1" />
-            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_Config(&quot;vbaCodes&quot;).ToString]" DisplayName="Invoke VBA - CopyColumnDataInRange" EntryMethodName="[in_Config(&quot;vbaCopyColumnDataInRange&quot;).ToString]" EntryMethodParameters="[{in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString,&quot;Current data Charge&quot;,string.Format(in_Config(&quot;VodafoneActualChargeColumnName&quot;).ToString,in_strPeriod)}]" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_2" />
+            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_Config(&quot;vbaExtendFormulaCode&quot;).ToString]" DisplayName="Invoke VBA - Extend Formula" EntryMethodName="[in_Config(&quot;vbaExtendFormula&quot;).ToString]" EntryMethodParameters="[{in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString,in_dtPivotTable.rows.Count.ToString}]" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_3" />
+            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_Config(&quot;vbaRemoveDuplicatesInColumnCode&quot;).ToString]" DisplayName="Invoke VBA - Remove Duplicates in Column C" EntryMethodName="[in_Config(&quot;vbaRemoveDuplicatesInColumn&quot;).ToString]" EntryMethodParameters="[{in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString}]" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_1" />
+            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_Config(&quot;vbaCopyColumnDataInRangeCode&quot;).ToString]" DisplayName="Invoke VBA - CopyColumnDataInRange" EntryMethodName="[in_Config(&quot;vbaCopyColumnDataInRange&quot;).ToString]" EntryMethodParameters="[{in_Config(&quot;VodafoneDataForJournalSheetName&quot;).ToString,&quot;Current data Charge&quot;,string.Format(in_Config(&quot;VodafoneActualChargeColumnName&quot;).ToString,in_strPeriod)}]" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_2" />
           </Sequence>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>

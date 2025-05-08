@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1055.2,2208.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1370.4,2659.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AfterResume_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -146,7 +146,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Steps done in this workflow:&#xA;1. Write Period as P[fiscal period] in cell A3 from Summary Data tab&#xA;2. Read Data Received tab&#xA;3. Filter Data Received table to remove last 2 rows&#xA;4. Extend formulas in Summary Data tab&#xA;5. Refresh Pivot and read it&#xA;6. Filter Pivot to remove blank, 0, Grand Total and empty lines&#xA;&#xA;" DisplayName="Recharges - 3.4 Update Summary Data" sap:VirtualizedContainerService.HintSize="545.6,2144" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Steps done in this workflow:&#xA;1. Write Period as P[fiscal period] in cell A3 from Summary Data tab&#xA;2. Read Data Received tab&#xA;3. Filter Data Received table to remove last 2 rows&#xA;4. Extend formulas in Summary Data tab&#xA;5. Refresh Pivot and read it&#xA;6. Filter Pivot to remove blank, 0, Grand Total and empty lines&#xA;&#xA;" DisplayName="Recharges - 3.4 Update Summary Data" sap:VirtualizedContainerService.HintSize="568.8,2594.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="Recharges - 3.4 Update Summary Data" Name="strSubProcessName" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtDataReceived" />
@@ -159,7 +159,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Excel Application Scop - Vodafone Usage File" sap:VirtualizedContainerService.HintSize="483.2,612" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_9" InstanceCachePeriod="3000" SensitivityOperation="None" WorkbookPath="[in_strTemplatePath]">
+    <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Excel Application Scop - Vodafone Usage File" sap:VirtualizedContainerService.HintSize="506.4,612" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_9" InstanceCachePeriod="3000" SensitivityOperation="None" WorkbookPath="[in_strTemplatePath]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -214,26 +214,47 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Excel Application Scop - Vodafone Usage File" sap:VirtualizedContainerService.HintSize="483.2,1224" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_8" InstanceCachePeriod="3000" SensitivityOperation="None" WorkbookPath="[in_strTemplatePath]">
+    <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Excel Application Scop - Vodafone Usage File" sap:VirtualizedContainerService.HintSize="506.4,1674.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_8" InstanceCachePeriod="3000" SensitivityOperation="None" WorkbookPath="[in_strTemplatePath]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,1114.4" sap2010:WorkflowViewState.IdRef="Sequence_13">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="472.8,1564.8" sap2010:WorkflowViewState.IdRef="Sequence_13">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_Config(&quot;vbaCodes&quot;).ToString]" DisplayName="Invoke VBA - Extend Formula" EntryMethodName="[in_Config(&quot;vbaExtendFormula&quot;).ToString]" EntryMethodParameters="[{in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString,(dtDataReceived.rows.Count - 2).ToString}]" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_1" />
-            <ui:ExcelRefreshPivotTable DisplayName="Refresh Pivot Table - Summary Data" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelRefreshPivotTable_3" SheetName="[in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString]" TableName="[in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString]" />
-            <ui:ExcelRefreshPivotTable DisplayName="Refresh Pivot Table - Pivot Table 1" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ExcelRefreshPivotTable_4" SheetName="[in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString]" TableName="[in_Config(&quot;VodafonePivotName&quot;).ToString]" />
-            <ui:ExcelReadRange AddHeaders="True" DataTable="[out_dtPivotTable]" DisplayName="Read Range - Copy pivot Table" sap:VirtualizedContainerService.HintSize="387.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_11" Range="[in_Config(&quot;VodafoneSummaryDataReadRange&quot;).ToString]" SheetName="[in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString]" />
-            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_Config(&quot;vbaCodes&quot;).ToString]" DisplayName="Invoke VBA - Exclude Specific Value in Pivot" EntryMethodName="[in_Config(&quot;vbaExcludeSpecificValueInPivot&quot;).ToString]" EntryMethodParameters="[{in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString,string.Join(&quot;,&quot;,{&quot;0&quot;,&quot;(blank)&quot;}).Concat(string.join(&quot;,&quot;,out_dtPivotTable.AsEnumerable.Where(function(x) x(0).ToString.StartsWith(&quot;27&quot;) or x(0).tostring = &quot;0&quot; or string.IsNullOrWhiteSpace(x(0).ToString)).CopyToDataTable.AsEnumerable.Select(function(x) x(0).ToString).ToList)),in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString,&quot;Cost centre&quot;}]" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_2" />
-            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_Config(&quot;vbaCodes&quot;).ToString]" DisplayName="Invoke VBA - Exclude Specific Value in Pivot Table 1" EntryMethodName="[in_Config(&quot;vbaExcludeSpecificValueInPivot&quot;).ToString]" EntryMethodParameters="[{in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString,string.Join(&quot;,&quot;,{&quot;0&quot;,&quot;(blank)&quot;}).Concat(string.join(&quot;,&quot;,out_dtPivotTable.AsEnumerable.Where(function(x) not x(0).ToString.StartsWith(&quot;27&quot;) or x(0).tostring = &quot;0&quot; or string.IsNullOrWhiteSpace(x(0).ToString)).CopyToDataTable.AsEnumerable.Select(function(x) x(0).ToString).ToList)),in_Config(&quot;VodafonePivotName&quot;).ToString,&quot;Cost centre&quot;}]" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_3" />
-            <ui:ExcelReadRange AddHeaders="True" DataTable="[out_dtPivotTable]" DisplayName="Read Range - Copy pivot Table" sap:VirtualizedContainerService.HintSize="387.2,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_13" Range="[in_Config(&quot;VodafoneSummaryDataReadRange&quot;).ToString]" SheetName="[in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString]" />
-            <ui:FilterDataTable DataTable="[out_dtPivotTable]" DisplayName="Filter Data Table - empty lines and Grand Total" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="387.2,162.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_6" OutputDataTable="[out_dtPivotTable]" SelectColumnsMode="Remove">
+            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_Config(&quot;vbaExtendFormulaCode&quot;).ToString]" DisplayName="Invoke VBA - Extend Formula" EntryMethodName="[in_Config(&quot;vbaExtendFormula&quot;).ToString]" EntryMethodParameters="[{in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString,(dtDataReceived.rows.Count - 2).ToString}]" sap:VirtualizedContainerService.HintSize="410.4,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_1" />
+            <ui:ExcelRefreshPivotTable DisplayName="Refresh Pivot Table - Summary Data" sap:VirtualizedContainerService.HintSize="410.4,88" sap2010:WorkflowViewState.IdRef="ExcelRefreshPivotTable_3" SheetName="[in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString]" TableName="[in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString]" />
+            <ui:ExcelRefreshPivotTable DisplayName="Refresh Pivot Table - Pivot Table 1" sap:VirtualizedContainerService.HintSize="410.4,88" sap2010:WorkflowViewState.IdRef="ExcelRefreshPivotTable_4" SheetName="[in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString]" TableName="[in_Config(&quot;VodafonePivotName&quot;).ToString]" />
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[out_dtPivotTable]" DisplayName="Read Range - Copy pivot Table" sap:VirtualizedContainerService.HintSize="410.4,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_11" Range="[in_Config(&quot;VodafoneSummaryDataReadRange&quot;).ToString]" SheetName="[in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString]" />
+            <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_Config(&quot;vbaExcludeSpecificValueInPivotCode&quot;).ToString]" DisplayName="Invoke VBA - Exclude Specific Value in Pivot" EntryMethodName="[in_Config(&quot;vbaExcludeSpecificValueInPivot&quot;).ToString]" EntryMethodParameters="[{in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString,string.Join(&quot;,&quot;,{&quot;0&quot;,&quot;(blank)&quot;}).Concat(string.join(&quot;,&quot;,out_dtPivotTable.AsEnumerable.Where(function(x) x(0).ToString.StartsWith(&quot;27&quot;) or x(0).tostring = &quot;0&quot; or string.IsNullOrWhiteSpace(x(0).ToString)).CopyToDataTable.AsEnumerable.Select(function(x) x(0).ToString).ToList)),in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString,&quot;Cost centre&quot;}]" sap:VirtualizedContainerService.HintSize="410.4,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_2" />
+            <If Condition="[out_dtPivotTable.AsEnumerable.where(function(x) x(0).tostring.StartsWith(&quot;27&quot;)).Any = true]" sap:VirtualizedContainerService.HintSize="410.4,538.4" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376.8,177.6" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="[in_Config(&quot;vbaExcludeSpecificValueInPivotCode&quot;).ToString]" DisplayName="Invoke VBA - Exclude Specific Value in Pivot Table 1" EntryMethodName="[in_Config(&quot;vbaExcludeSpecificValueInPivot&quot;).ToString]" EntryMethodParameters="[{in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString,string.Join(&quot;,&quot;,{&quot;0&quot;,&quot;(blank)&quot;}).Concat(string.join(&quot;,&quot;,out_dtPivotTable.AsEnumerable.Where(function(x) not x(0).ToString.StartsWith(&quot;27&quot;) or x(0).tostring = &quot;0&quot; or string.IsNullOrWhiteSpace(x(0).ToString)).CopyToDataTable.AsEnumerable.Select(function(x) x(0).ToString).ToList)),in_Config(&quot;VodafonePivotName&quot;).ToString,&quot;Cost centre&quot;}]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeVBA_3" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="376.8,177.6" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ExcelWriteCell Cell="L24" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="[in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString]" Text="The pivot table can't be filtered because there are no CC starting with 27." />
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[out_dtPivotTable]" DisplayName="Read Range - Copy pivot Table" sap:VirtualizedContainerService.HintSize="410.4,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_13" Range="[in_Config(&quot;VodafoneSummaryDataReadRange&quot;).ToString]" SheetName="[in_Config(&quot;VodafoneSummaryDataSheetName&quot;).ToString]" />
+            <ui:FilterDataTable DataTable="[out_dtPivotTable]" DisplayName="Filter Data Table - empty lines and Grand Total" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="410.4,162.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_6" OutputDataTable="[out_dtPivotTable]" SelectColumnsMode="Remove">
               <ui:FilterDataTable.Filters>
                 <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                   <ui:FilterOperationArgument BooleanOperator="And" Operator="NOTEQ">

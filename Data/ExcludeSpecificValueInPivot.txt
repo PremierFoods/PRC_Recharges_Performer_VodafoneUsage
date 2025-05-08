@@ -1,0 +1,29 @@
+Sub ExcludeSpecificValueInPivot(worksheet as string, excludeList as string, pivotName as string, pivotField as string)
+    Dim ws As Worksheet
+    Dim pt As PivotTable
+    Dim pf As PivotField
+    Dim pi As PivotItem
+
+    ' Set worksheet and pivot table
+    Set ws = ThisWorkbook.Worksheets(worksheet)
+    Set pt = ws.PivotTables(pivotName)
+    Set pf = pt.PivotFields(pivotField)
+
+'MsgBox "Field '" & pf & "' found in PivotTable '" & pt & "'."
+
+    ' Loop through each item in the pivot field
+	
+    For Each pi In pf.PivotItems
+
+		if pi.Visible= False then
+		  pi.Visible = True
+               End If
+        For j = LBound(split(excludeList,",")) To UBound(split(excludeList,","))
+            If pi.Name = split(excludeList,",")(j) Then
+		'MsgBox "Exclude '" & pi.Name & "' from PivotTable '" & pt & "'."
+                pi.Visible = False
+                Exit For
+            End If
+        Next j
+    Next pi
+End Sub
